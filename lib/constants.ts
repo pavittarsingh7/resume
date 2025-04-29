@@ -1,7 +1,8 @@
 export const personalInfo = {
   name: "Pavittar Singh",
   title: "Full Stack Developer",
-  intro: "Information Technology is a fascinating career field, equally challenging, relatively easy to get into, and for the right individual, it also can be quite lucrative. I always try to learn and keep learning to get wisdom.",
+  intro:
+    "Information Technology is a fascinating career field, equally challenging, relatively easy to get into, and for the right individual, it also can be quite lucrative. I always try to learn and keep learning to get wisdom.",
   contact: {
     phone: "+(91) 9463713040",
     email: "pavittarsingh7@gmail.com",
@@ -11,7 +12,7 @@ export const personalInfo = {
     dob: "09 November 1989",
     father: "Sh. Jarnail Singh",
     mother: "Smt. Amarjit Kaur",
-  }
+  },
 };
 
 export const education = [
@@ -56,10 +57,7 @@ export const experience = [
     position: "Full Stack Developer (Part-Time)",
     company: "Saibhang Softronics Pvt. Ltd., Mohali",
     period: "Apr 2023 - Jan 2025",
-    description: [
-      "Developed and maintained web and mobile applications.",
-      "Collaborated with a team to implement various projects.",
-    ],
+    description: ["Developed and maintained web and mobile applications.", "Collaborated with a team to implement various projects."],
   },
   {
     position: "Computer Hardware & Networking Technician",

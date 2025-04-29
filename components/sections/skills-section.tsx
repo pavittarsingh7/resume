@@ -2,22 +2,19 @@
 
 import { skills } from "@/lib/constants";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AnimatedSection } from "@/components/animations/animated-section";
-
+import { motion } from "framer-motion";
 export function SkillsSection() {
   const skillCategories = Object.keys(skills);
-  
+
   return (
     <section id="skills" className="py-20 bg-muted/50">
       <div className="container mx-auto px-4 md:px-6">
         <AnimatedSection>
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Technical Skills
-          </h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Technical Skills</h2>
         </AnimatedSection>
-        
+
         <AnimatedSection delay={100}>
           <Tabs defaultValue={skillCategories[0]} className="w-full max-w-4xl mx-auto">
             <TabsList className="mb-8 w-full h-auto flex flex-wrap justify-center gap-2">
@@ -31,14 +28,12 @@ export function SkillsSection() {
                 </TabsTrigger>
               ))}
             </TabsList>
-            
+
             {skillCategories.map((category) => (
               <TabsContent key={category} value={category}>
                 <Card>
                   <CardHeader>
-                    <h3 className="text-xl font-bold">
-                      {skills[category as keyof typeof skills].title} Skills
-                    </h3>
+                    <h3 className="text-xl font-bold">{skills[category as keyof typeof skills].title} Skills</h3>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-6">
@@ -48,7 +43,14 @@ export function SkillsSection() {
                             <span className="font-medium">{skill.name}</span>
                             <span className="text-muted-foreground">{skill.level}%</span>
                           </div>
-                          <Progress value={skill.level} className="h-2" />
+                          <div className="w-full h-2 bg-gray-700/60 rounded-lg overflow-hidden">
+                            <motion.div
+                              initial={{ width: 0 }}
+                              whileInView={{ width: `${skill.level}%` }}
+                              transition={{ duration: 1.5, ease: "easeOut" }}
+                              className="h-full bg-blue-500 rounded-r"
+                            />
+                          </div>
                         </div>
                       ))}
                     </div>
