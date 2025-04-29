@@ -10,11 +10,9 @@ export function ContactSection() {
     <section id="contact" className="py-20 bg-muted/50">
       <div className="container mx-auto px-4 md:px-6">
         <AnimatedSection>
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Contact Information
-          </h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Contact Information</h2>
         </AnimatedSection>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           <AnimatedSection delay={100}>
             <Card className="h-full hover:shadow-md transition-shadow group">
@@ -23,16 +21,13 @@ export function ContactSection() {
                   <Phone className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="font-bold mb-2">Phone</h3>
-                <a
-                  href={`tel:${personalInfo.contact.phone}`}
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
+                <a href={`tel:${personalInfo.contact.phone}`} className="text-muted-foreground hover:text-primary transition-colors">
                   {personalInfo.contact.phone}
                 </a>
               </CardContent>
             </Card>
           </AnimatedSection>
-          
+
           <AnimatedSection delay={200}>
             <Card className="h-full hover:shadow-md transition-shadow group">
               <CardContent className="p-6 flex flex-col items-center text-center h-full">
@@ -49,7 +44,7 @@ export function ContactSection() {
               </CardContent>
             </Card>
           </AnimatedSection>
-          
+
           <AnimatedSection delay={300}>
             <Card className="h-full hover:shadow-md transition-shadow group">
               <CardContent className="p-6 flex flex-col items-center text-center h-full">
@@ -57,33 +52,11 @@ export function ContactSection() {
                   <MapPin className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="font-bold mb-2">Address</h3>
-                <p className="text-muted-foreground">
-                  {personalInfo.contact.address}
-                </p>
+                <p className="text-muted-foreground">{personalInfo.contact.address}</p>
               </CardContent>
             </Card>
           </AnimatedSection>
         </div>
-        
-        <AnimatedSection delay={400} className="mt-12">
-          <div className="text-center">
-            <h3 className="text-xl font-bold mb-4">Personal Information</h3>
-            <div className="max-w-md mx-auto space-y-2">
-              <p>
-                <span className="font-medium">Date of Birth:</span>{" "}
-                <span className="text-muted-foreground">{personalInfo.personal.dob}</span>
-              </p>
-              <p>
-                <span className="font-medium">Father's Name:</span>{" "}
-                <span className="text-muted-foreground">{personalInfo.personal.father}</span>
-              </p>
-              <p>
-                <span className="font-medium">Mother's Name:</span>{" "}
-                <span className="text-muted-foreground">{personalInfo.personal.mother}</span>
-              </p>
-            </div>
-          </div>
-        </AnimatedSection>
       </div>
     </section>
   );
