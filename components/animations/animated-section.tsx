@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, ReactNode } from "react";
-import { motion, useInView, useAnimation } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface AnimatedSectionProps {
@@ -10,7 +9,6 @@ interface AnimatedSectionProps {
   direction?: "up" | "down" | "left" | "right";
   delay?: number;
   fullWidth?: boolean;
-  duration?: number;
 }
 
 export function AnimatedSection({
@@ -19,63 +17,59 @@ export function AnimatedSection({
   direction = "up",
   delay = 0,
   fullWidth = false,
-  duration = 0.5,
 }: AnimatedSectionProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-10%" });
-  const controls = useAnimation();
+  const sectionRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    if (isInView) {
-      controls.start("visible");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-in");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
-  }, [isInView, controls]);
-  
-  const getInitialDirection = () => {
+    
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  const getTransformStyle = () => {
     switch (direction) {
       case "up":
-        return { y: 50 };
+        return "translate-y-10";
       case "down":
-        return { y: -50 };
+        return "translate-y-[-10px]";
       case "left":
-        return { x: 50 };
+        return "translate-x-10";
       case "right":
-        return { x: -50 };
+        return "translate-x-[-10px]";
       default:
-        return { y: 50 };
+        return "translate-y-10";
     }
-  };
-  
-  const variants = {
-    hidden: {
-      opacity: 0,
-      ...getInitialDirection(),
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      transition: {
-        duration: duration,
-        delay: delay * 0.001,
-        ease: [0.215, 0.610, 0.355, 1.000],
-      },
-    },
   };
   
   return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={controls}
-      variants={variants}
+    <div
+      ref={sectionRef}
       className={cn(
-        "will-change-transform",
+        "opacity-0 transform transition-all duration-700 ease-out",
+        getTransformStyle(),
         fullWidth ? "w-full" : "",
         className
       )}
+      style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

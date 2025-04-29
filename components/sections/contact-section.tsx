@@ -64,7 +64,26 @@ export function ContactSection() {
             </Card>
           </AnimatedSection>
         </div>
-
+        
+        <AnimatedSection delay={400} className="mt-12">
+          <div className="text-center">
+            <h3 className="text-xl font-bold mb-4">Personal Information</h3>
+            <div className="max-w-md mx-auto space-y-2">
+              <p>
+                <span className="font-medium">Date of Birth:</span>{" "}
+                <span className="text-muted-foreground">{personalInfo.personal.dob}</span>
+              </p>
+              <p>
+                <span className="font-medium">Father's Name:</span>{" "}
+                <span className="text-muted-foreground">{personalInfo.personal.father}</span>
+              </p>
+              <p>
+                <span className="font-medium">Mother's Name:</span>{" "}
+                <span className="text-muted-foreground">{personalInfo.personal.mother}</span>
+              </p>
+            </div>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   );

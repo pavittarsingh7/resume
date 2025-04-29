@@ -85,46 +85,12 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Enhanced Animation Classes */
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.hover-grow {
-  @apply transition-transform duration-300 ease-out;
-}
-
-.hover-grow:hover {
-  transform: scale(1.02);
-}
-
-.hover-lift {
-  @apply transition-all duration-300 ease-out;
-}
-
-.hover-lift:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* Parallax effect */
-.parallax {
-  transform-style: preserve-3d;
-  perspective: 1000px;
-}
-
-.parallax-layer {
-  will-change: transform;
-}
-
-/* Enhanced keyframe animations */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+/* Animation classes */
+.animate-in {
+  animation: fadeInUp 0.7s ease forwards;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transform: translateX(0) !important;
 }
 
 @keyframes fadeInUp {
@@ -143,14 +109,4 @@ html {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
-}
-
-/* Card hover effects */
-.card-hover {
-  @apply transition-all duration-300 ease-out;
-}
-
-.card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
 }
